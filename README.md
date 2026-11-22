@@ -32,7 +32,7 @@ Synthetic data only, never real patient details. Data stays in the UK (eu-west-2
 The infrastructure, pipeline, scripts and documentation are my own work. The application code was generated with Claude Code. I'm a cloud engineer, not a software developer. See [ADR-003](docs/decisions.md).
 
 ## Progress
-- [ ] Phase 0: Repo, budget alerts, decision records
+- [x] Phase 0: Repo, budget alerts, decision records
 - [ ] Phase 1: App running in Docker locally
 - [ ] Phase 2: Terraform: VPC, networking, security, remote state
 - [ ] Phase 3: EC2, IAM, load balancer, app live
