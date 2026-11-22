@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Referral Tracker{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1d2330; }
+    header { background: #1f4e79; color: #fff; padding: 0.8rem 1.5rem; display: flex; gap: 1.5rem; align-items: center; }
+    header a { color: #fff; text-decoration: none; }
+    header .brand { font-weight: 600; font-size: 1.1rem; }
+    main { max-width: 960px; margin: 1.5rem auto; padding: 0 1rem; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid #e1e4ea; }
+    th { background: #eef1f5; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    tr.overdue { background: #fdecec; }
+    .badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.8rem; }
+    .urgent { background: #c62828; color: #fff; }
+    .routine { background: #dfe3ea; }
+    .flag { color: #c62828; font-weight: 600; }
+    .note { color: #555; font-size: 0.9rem; }
+    .errors { background: #fdecec; border: 1px solid #c62828; padding: 0.6rem 1rem; }
+    form.card { background: #fff; padding: 1.2rem; max-width: 420px; }
+    label { display: block; margin-top: 0.8rem; font-weight: 600; }
+    input, select { width: 100%; padding: 0.45rem; margin-top: 0.25rem; box-sizing: border-box; }
+    button { margin-top: 1.1rem; padding: 0.5rem 1.2rem; background: #1f4e79; color: #fff; border: 0; cursor: pointer; }
+    .banner { background: #fff8e1; border-left: 4px solid #f9a825; padding: 0.5rem 1rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">Clinic Referral Tracker</a>
+    <a href="/">Board</a>
+    <a href="/referrals/new">Add referral</a>
+  </header>
+  <main>
+    <p class="banner">Synthetic data only. Do not enter real patient details.</p>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Add referral · Referral Tracker{% endblock %}
+{% block content %}
+<h1>Add a referral</h1>
+{% if errors %}
+<div class="errors"><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% endif %}
+<form class="card" method="post" action="/referrals/new">
+  <label for="reference">Reference (synthetic)</label>
+  <input id="reference" name="reference" placeholder="SYN-1234" value="{{ form.reference or '' }}" required>
+
+  <label for="referring_practice">Referring practice</label>
+  <input id="referring_practice" name="referring_practice" maxlength="120" value="{{ form.referring_practice or '' }}" required>
+
+  <label for="priority">Priority</label>
+  <select id="priority" name="priority" required>
+    {% for p in priorities %}
+    <option value="{{ p }}" {{ 'selected' if form.priority == p }}>{{ p }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="date_received">Date received</label>
+  <input id="date_received" name="date_received" type="date" value="{{ form.date_received or '' }}" required>
+
+  <button type="submit">Add referral</button>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Board · Referral Tracker{% endblock %}
+{% block content %}
+<h1>Referral board</h1>
+<p class="note">
+  Sorted by priority, then longest wait. Flagged when waiting more than
+  {{ urgent_threshold }} days (urgent) or {{ routine_threshold }} days (routine), until seen.
+  <strong>{{ overdue_count }}</strong> flagged.
+</p>
+{% if rows %}
+<table>
+  <thead>
+    <tr><th>Reference</th><th>Practice</th><th>Priority</th><th>Status</th><th>Received</th><th>Days waiting</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for row in rows %}
+    {% set r = row.referral %}
+    <tr class="{{ 'overdue' if row.overdue }}">
+      <td>{{ r.reference }}</td>
+      <td>{{ r.referring_practice }}</td>
+      <td><span class="badge {{ r.priority }}">{{ r.priority }}</span></td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.date_received.isoformat() }}</td>
+      <td>{{ row.days_waiting }}{% if row.overdue %} <span class="flag">⚠ overdue</span>{% endif %}</td>
+      <td><a href="/referrals/{{ r.id }}">Update</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No referrals yet. <a href="/referrals/new">Add one</a>.</p>
+{% endif %}
+{% endblock %}
